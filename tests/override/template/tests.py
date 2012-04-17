@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.template.loader import render_to_string
 from django.template.base import TemplateDoesNotExist
-from override.templatetags.override import OverrideError
+from override.templatetags.override_tags import OverrideError
 
 
 class RenderTest(TestCase):
