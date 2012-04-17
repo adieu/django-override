@@ -60,6 +60,12 @@ def get_template(template_name, override_level=1):
 class OverrideNode(ExtendsNode):
     must_be_first = MAKE_OVERRIDE_TAGS_BUILT_IN
 
+    def __init__(self, nodelist, parent_name, parent_name_expr, template_dirs=None):
+        self.nodelist = nodelist
+        self.parent_name, self.parent_name_expr = parent_name, parent_name_expr
+        self.template_dirs = template_dirs
+        self.blocks = dict([(n.name, n) for n in nodelist.get_nodes_by_type(BlockNode)])
+
     def __repr__(self):
         if self.parent_name_expr:
             return "<OverrideNode: override %s>" % self.parent_name_expr.token
