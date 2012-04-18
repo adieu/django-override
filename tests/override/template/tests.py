@@ -18,8 +18,11 @@ class RenderTest(TestCase):
     def testMultipleOverride(self):
         self.assertEqual(render_to_string("app3.html"), u'This is a normal Template.\n\n\nOverride block1 again\n')
 
-    def testOverrideAndExtends(self):
+    def testOverrideThenExtends(self):
         self.assertEqual(render_to_string("override_extends.html"), u'This is a normal Template.\n\n\nOverride block1 again\n')
+
+    def testExtendsThenOverride(self):
+        self.assertEqual(render_to_string("extends_override.html"), u'This is a normal Template.\n\n\nOverride block1 again\n')
 
 
 class ExceptionTest(TestCase):
